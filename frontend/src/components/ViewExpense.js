@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ExpenseChart from "./ExpenseChart";
 
 const ViewExpense = () => {
   const [expenses, setExpenses] = useState([]);
@@ -9,7 +10,7 @@ const ViewExpense = () => {
   const calculate = (datas) => {
     console.log("Dataaaa0", datas);
     setData({});
-    console.log("Mapp", map)
+    console.log("Mapp", map);
     let map1 = {};
     datas.map((expense) => {
       if (map1[expense.category]) {
@@ -36,11 +37,6 @@ const ViewExpense = () => {
       console.log("Expense ", data);
       calculate(data);
     });
-    // .then(() => )
-    // .then((data) => {
-    //   console.log("Data " ,data)
-    //   calculate(data);
-    // });
   }, []);
 
   return (
@@ -78,6 +74,12 @@ const ViewExpense = () => {
               ))}
           </tbody>
         </table>
+        <div className="flex justify-center items-center flex-col mt-16">
+          <h1 className="text-xl font-semibold text-center">
+            Expense distribution category-wise
+          </h1>
+          <ExpenseChart expenses={map} />
+        </div>
       </div>
     </>
   );
