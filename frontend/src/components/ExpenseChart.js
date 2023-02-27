@@ -4,16 +4,17 @@ import { Pie } from "react-chartjs-2";
 
 const ExpenseChart = (expenses) => {
   let labels = [],
-    values = [],colors=[];
+    values = [],
+    colors = [];
 
-    const generateRandomColor=()=>{
-      let maxVal = 0xFFFFFF; // 16777215
-      let randomNumber = Math.random() * maxVal; 
-      randomNumber = Math.floor(randomNumber);
-      randomNumber = randomNumber.toString(16);
-      let randColor = randomNumber.padStart(6, 0);   
-      return `#${randColor.toUpperCase()}`
-  }
+  const generateRandomColor = () => {
+    let maxVal = 0xffffff; // 16777215
+    let randomNumber = Math.random() * maxVal;
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);
+    return `#${randColor.toUpperCase()}`;
+  };
 
   for (let key in expenses.expenses) {
     console.log(key, expenses.expenses[key]);
@@ -22,7 +23,6 @@ const ExpenseChart = (expenses) => {
     values.push(expenses.expenses[key]);
 
     colors.push(generateRandomColor());
-
   }
 
   const data = {

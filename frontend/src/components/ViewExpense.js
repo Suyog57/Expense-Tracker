@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ExpenseChart from "./ExpenseChart";
+import BarChart from "./BarChart";
 
 const ViewExpense = () => {
   const [expenses, setExpenses] = useState([]);
@@ -51,43 +52,56 @@ const ViewExpense = () => {
           Add expense
         </button>
       </Link>
-      {expenses.length===0?<h1 className="text-2xl font-semi-bold mt-10 text-center">No expenses yet, add to view!</h1>:
-      <div className="flex justify-center items-center mt-4 flex-col">
-        <h1 className="text-2xl font-semi-bold m-10">
-          {" "}
-          Here are all your expenses till date!
+      {expenses.length === 0 ? (
+        <h1 className="text-2xl font-semi-bold mt-10 text-center">
+          No expenses yet, add to view!
         </h1>
-        <table class="table-fixed w-8/12 border-2 border-black">
-          <thead>
-            <tr>
-              <th className="w-1/2 border border-black">Date</th>
-              <th className="w-1/2 border border-black">Category</th>
-              <th className="w-1/2 border border-black">Description</th>
-              <th className="w-1/2 border border-black">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            {expenses &&
-              expenses.map((expense, index) => (
-                <tr key={index} className="text-center">
-                  <td className="border border-black">
-                    {expense.createdAt.split("T")[0]}
-                  </td>
-                  <td className="border border-black">{expense.category}</td>
-                  <td className="border border-black p-2">{expense.description}</td>
-                  <td className="border border-black">{expense.amount}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-        <div className="flex justify-center items-center flex-col mt-16 mb-16">
-          <h1 className="text-xl font-semibold text-center mb-4">
-            Expense distribution category-wise
+      ) : (
+        <div className="flex justify-center items-center mt-4 flex-col">
+          <h1 className="text-2xl font-semi-bold m-10">
+            {" "}
+            Here are all your expenses till date!
           </h1>
-          <ExpenseChart expenses={map} />
+          <table class="table-fixed w-8/12 border-2 border-black">
+            <thead>
+              <tr>
+                <th className="w-1/2 border border-black">Date</th>
+                <th className="w-1/2 border border-black">Category</th>
+                <th className="w-1/2 border border-black">Description</th>
+                <th className="w-1/2 border border-black">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {expenses &&
+                expenses.map((expense, index) => (
+                  <tr key={index} className="text-center">
+                    <td className="border border-black">
+                      {expense.createdAt.split("T")[0]}
+                    </td>
+                    <td className="border border-black">{expense.category}</td>
+                    <td className="border border-black p-2">
+                      {expense.description}
+                    </td>
+                    <td className="border border-black">{expense.amount}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div className="flex justify-center items-center flex-col mt-16 mb-16">
+            <h1 className="text-xl font-semibold text-center mb-4">
+              Expense distribution category-wise
+            </h1>
+            <ExpenseChart expenses={map} />
+          </div>
+
+          <div className="flex justify-center items-center flex-col mt-16 mb-16">
+            <h1 className="text-xl font-semibold text-center mb-4">
+              Expense distribution month-wise
+            </h1>
+            <BarChart expenses={expenses} />
+          </div>
         </div>
-      </div>}
+      )}
     </>
   );
 };
