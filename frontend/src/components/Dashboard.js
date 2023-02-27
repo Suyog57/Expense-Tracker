@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const handleClick = () => {
     authContext.handleLogout();
-    navigate("/");
+    navigate("/login");
   };
 
   // const [expenses, setExpenses] = useState();

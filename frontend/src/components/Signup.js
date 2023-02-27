@@ -37,7 +37,7 @@ const Signup = () => {
       // .then((data) => {
       //   authContext.handleLogin(data.token);
       // })
-      .then(() => navigate("/"));
+      .then(() => navigate("/login"));
   };
   return (
     <>
