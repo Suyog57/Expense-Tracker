@@ -41,13 +41,19 @@ const ViewExpense = () => {
 
   return (
     <>
-      <Link to="/">
+      <Link to="/dashboard">
         <button className="bg-black p-2 text-white mt-4 ml-4 rounded-lg">
-          Go back
+          Dashboard
         </button>
       </Link>
+      <Link to="/expense/add">
+        <button className="bg-black p-2 text-white mt-4 ml-4 rounded-lg">
+          Add expense
+        </button>
+      </Link>
+      {expenses.length===0?<h1 className="text-2xl font-semi-bold mt-10 text-center">No expenses yet, add to view!</h1>:
       <div className="flex justify-center items-center mt-12 flex-col">
-        <h1 className="text-2xl semi-bold m-10">
+        <h1 className="text-2xl font-semi-bold m-10">
           {" "}
           Here are all your expenses till date
         </h1>
@@ -61,6 +67,7 @@ const ViewExpense = () => {
             </tr>
           </thead>
           <tbody>
+            
             {expenses &&
               expenses.map((expense, index) => (
                 <tr key={index} className="text-center">
@@ -68,19 +75,19 @@ const ViewExpense = () => {
                     {expense.createdAt.split("T")[0]}
                   </td>
                   <td className="border border-black">{expense.category}</td>
-                  <td className="border border-black">{expense.description}</td>
+                  <td className="border border-black p-2">{expense.description}</td>
                   <td className="border border-black">{expense.amount}</td>
                 </tr>
               ))}
           </tbody>
         </table>
-        <div className="flex justify-center items-center flex-col mt-16">
-          <h1 className="text-xl font-semibold text-center">
+        <div className="flex justify-center items-center flex-col mt-16 mb-16">
+          <h1 className="text-xl font-semibold text-center mb-4">
             Expense distribution category-wise
           </h1>
           <ExpenseChart expenses={map} />
         </div>
-      </div>
+      </div>}
     </>
   );
 };

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
+import Authcontext from "../context/Authcontext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const authContext=useContext(Authcontext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +32,8 @@ const Login = () => {
     e.preventDefault();
 
     sendRequest()
-      .then((data) => localStorage.setItem("token", data.token))
-      .then(() => navigate("/"))
+      .then((data) => authContext.handleLogin(data.token))
+      .then(() => navigate("/dashboard"))
       .then((data) => console.log(data));
   };
 

@@ -10,8 +10,8 @@ const getall = async (req, res) => {
   //console.log(token)
   const decoded = jwt.verify(token, "123");
   try {
-    console.log(decoded);
-    const expenses = await Expense.find({ user: decoded.userId });
+    console.log("decoded",decoded);
+    const expenses = await Expense.find({ user: decoded.user });
     return res.json(expenses);
   } catch (err) {
     return res.status(401).json({ error: "Authentication required" });
@@ -33,7 +33,7 @@ const add = async (req, res) => {
       amount,
       category,
       description,
-      user: decoded.userId,
+      user: decoded.user,
     });
 
     await expense.save();

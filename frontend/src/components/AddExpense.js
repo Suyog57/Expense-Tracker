@@ -46,9 +46,9 @@ const AddExpense = () => {
   return (
     <>
       <section className="">
-        <Link to="/">
+        <Link to="/dashboard">
           <button className="bg-black p-2 text-white mt-4 ml-4 rounded-lg">
-            Go back
+            Dashboard
           </button>
         </Link>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

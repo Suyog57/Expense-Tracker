@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Authcontext from "../context/Authcontext";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const authContext=useContext(Authcontext);
 
   const navigate = useNavigate();
 
@@ -31,10 +34,10 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     sendRequest()
-      .then((data) => {
-        localStorage.setItem("token", data);
-      })
-      .then(() => navigate("/login"));
+      // .then((data) => {
+      //   authContext.handleLogin(data.token);
+      // })
+      .then(() => navigate("/"));
   };
   return (
     <>
@@ -110,7 +113,7 @@ const Signup = () => {
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
                   <Link
-                    to="/login"
+                    to="/"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Login here
