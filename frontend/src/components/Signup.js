@@ -8,7 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const authContext=useContext(Authcontext);
+  const authContext = useContext(Authcontext);
 
   const navigate = useNavigate();
 
@@ -45,14 +45,14 @@ const Signup = () => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-center text-3xl font-bold leading-tight tracking-normal text-gray-900 dark:text-white">
                 Signup{" "}
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label
                     for="name"
-                    className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
                   >
                     Your Name
                   </label>
@@ -70,7 +70,7 @@ const Signup = () => {
                 <div>
                   <label
                     for="email"
-                    className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
                   >
                     Your email
                   </label>
@@ -88,7 +88,7 @@ const Signup = () => {
                 <div>
                   <label
                     for="password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
                   >
                     Password
                   </label>
@@ -106,15 +106,15 @@ const Signup = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-xl text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Create an account
                 </button>
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                <p className="text-md font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
                   <Link
-                    to="/"
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    to="/login"
+                    className="font-medium text-white hover:underline dark:text-primary-500"
                   >
                     Login here
                   </Link>

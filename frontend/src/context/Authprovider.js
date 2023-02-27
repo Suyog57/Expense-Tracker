@@ -9,21 +9,17 @@ const AuthProvider = (props) => {
       setIsLoggedIn(true);
     }
   }, []);
-  
+
   const handleLogin = (token) => {
     localStorage.setItem("token", token);
-    localStorage.setItem('isLoggedIn','1');
-    // localStorage.setItem('userID',uId);
-    // localStorage.setItem('email',emailID);
+    localStorage.setItem("isLoggedIn", "1");
     setIsLoggedIn(true);
   };
   const handleLogout = React.useCallback(() => {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
-    localStorage.removeItem('isLoggedIn');
-    // localStorage.removeItem('userID');
-    // localStorage.removeItem('email');
-  },[]);
+    localStorage.removeItem("isLoggedIn");
+  }, []);
 
   const authValue = {
     isLoggedIn,

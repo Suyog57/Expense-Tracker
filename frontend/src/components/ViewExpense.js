@@ -52,10 +52,10 @@ const ViewExpense = () => {
         </button>
       </Link>
       {expenses.length===0?<h1 className="text-2xl font-semi-bold mt-10 text-center">No expenses yet, add to view!</h1>:
-      <div className="flex justify-center items-center mt-12 flex-col">
+      <div className="flex justify-center items-center mt-4 flex-col">
         <h1 className="text-2xl font-semi-bold m-10">
           {" "}
-          Here are all your expenses till date
+          Here are all your expenses till date!
         </h1>
         <table class="table-fixed w-8/12 border-2 border-black">
           <thead>

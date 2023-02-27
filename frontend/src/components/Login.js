@@ -2,14 +2,13 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import jwt_decode from "jwt-decode";
 import Authcontext from "../context/Authcontext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const authContext=useContext(Authcontext);
+  const authContext = useContext(Authcontext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,14 +42,14 @@ const Login = () => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-white text-center text-3xl font-bold leading-tight tracking-tight   ">
+              <h1 className="tracking-normal text-white text-center text-3xl font-bold leading-tight">
                 Login
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label
                     for="email"
-                    className="block mb-2 text-xl font-medium dark:text-white"
+                    className="block mb-2 text-md font-medium dark:text-white"
                   >
                     Your email
                   </label>
@@ -68,7 +67,7 @@ const Login = () => {
                 <div>
                   <label
                     for="password"
-                    className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
                   >
                     Password
                   </label>
