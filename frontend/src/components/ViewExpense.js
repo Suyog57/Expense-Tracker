@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ExpenseChart from "./ExpenseChart";
 import BarChart from "./BarChart";
+import { RiDeleteBin6Line, RiEdit2Line } from "react-icons/ri";
 
 const ViewExpense = () => {
+  const navigate = useNavigate();
   const [expenses, setExpenses] = useState([]);
   const [map, setData] = useState({});
 
@@ -35,10 +37,30 @@ const ViewExpense = () => {
   useEffect(() => {
     getExpenses().then((data) => {
       setExpenses(data);
-      console.log("Expense ", data);
+      // console.log("Expense ", data);
       calculate(data);
     });
   }, []);
+
+  const deleteRequest = async (id) => {
+    const res = await axios
+      .delete(`http://localhost:5000/expense/${id}`)
+      .catch((err) => console.log(err));
+
+    const data = res.data;
+    return data;
+  };
+
+  const handleDelete = (id) => {
+    // console.log("hi"+id);
+    deleteRequest(id)
+      .then(() => navigate("/dashboard"))
+      .then(() => navigate("/expense"));
+  };
+
+  const handleEdit=(id)=>{
+    navigate(`/expense/${id}`);
+  }
 
   return (
     <>
@@ -69,6 +91,7 @@ const ViewExpense = () => {
                 <th className="w-1/2 border border-black">Category</th>
                 <th className="w-1/2 border border-black">Description</th>
                 <th className="w-1/2 border border-black">Amount</th>
+                <th className="w-1/2 border border-black">Edit/Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -83,6 +106,14 @@ const ViewExpense = () => {
                       {expense.description}
                     </td>
                     <td className="border border-black">{expense.amount}</td>
+                    <td className="border border-black">
+                      <button onClick={() => handleEdit(expense._id)}>
+                        <RiEdit2Line />
+                      </button>
+                      <button onClick={() => handleDelete(expense._id)}>
+                        <RiDeleteBin6Line />
+                      </button>
+                    </td>
                   </tr>
                 ))}
             </tbody>

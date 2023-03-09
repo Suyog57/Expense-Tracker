@@ -8,6 +8,7 @@ import AddExpense from "./components/AddExpense";
 import Authcontext from "./context/Authcontext";
 import Home from "./components/Home";
 import { useContext } from "react";
+import EditExpense from "./components/EditExpense";
 
 function App() {
   const authContext = useContext(Authcontext);
@@ -20,6 +21,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/expense" element={<ViewExpense />} />
             <Route path="/expense/add" element={<AddExpense />} />
+            <Route path='/expense/:id' element={<EditExpense/>}/>
           </>
         ) : (
           <>

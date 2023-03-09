@@ -27,7 +27,7 @@ const Home = () => {
           </div>
         </div>
         <Link to="/signup">
-          <button className="bg-black font-semi-bold rounded-lg text-white p-3 m-5 text-xl flex justify-center items-center">
+          <button className="hover:shadow-2xl bg-black font-semi-bold rounded-lg text-white p-3 m-5 text-xl flex justify-center items-center">
             <span className="mr-2 ">Get started </span>
             <FaArrowRight />
           </button>
