@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const jwtSecret = "123";
+const jwtSecret = process.env.JWT_SECRET;
 
 const auth = (req, res, next) => {
   const token = req.header("Authorization");

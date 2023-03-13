@@ -1,5 +1,6 @@
 const Expense = require("../models/expenseModel");
 const jwt = require("jsonwebtoken");
+const jwtSecret = process.env.JWT_SECRET;
 
 const getall = async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
@@ -8,7 +9,7 @@ const getall = async (req, res) => {
     return res.status(401).json({ error: "Authentication required" });
   }
   //console.log(token)
-  const decoded = jwt.verify(token, "123");
+  const decoded = jwt.verify(token, jwtSecret);
   try {
     // console.log("decoded",decoded);
     const expenses = await Expense.find({ user: decoded.user });
@@ -26,7 +27,7 @@ const add = async (req, res) => {
 
   const { amount, category, description } = req.body;
 
-  const decoded = jwt.verify(token, "123");
+  const decoded = jwt.verify(token, jwtSecret);
 
   try {
     const expense = new Expense({
