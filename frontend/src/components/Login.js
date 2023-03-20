@@ -18,7 +18,7 @@ const Login = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:5000/user/login", {
+      .post(`${process.env.req_url}/user/login`, {
         email: email,
         password: password,
       })

@@ -24,7 +24,7 @@ const AddExpense = () => {
   const sendRequest = async () => {
     const res = await axios
       .post(
-        "http://localhost:5000/expense/add",
+        `${process.env.req_url}/expense/add`,
         {
           amount: amount,
           category: category,

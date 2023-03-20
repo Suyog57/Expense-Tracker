@@ -27,7 +27,7 @@ const ViewExpense = () => {
   };
 
   const getExpenses = async () => {
-    const res = await axios.get("http://localhost:5000/expense", {
+    const res = await axios.get(`${process.env.req_url}/expense`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     const data = await res.data;
@@ -44,7 +44,7 @@ const ViewExpense = () => {
 
   const deleteRequest = async (id) => {
     const res = await axios
-      .delete(`http://localhost:5000/expense/${id}`)
+      .delete(`${process.env.req_url}/expense/${id}`)
       .catch((err) => console.log(err));
 
     const data = res.data;
