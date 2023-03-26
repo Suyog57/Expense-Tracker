@@ -24,7 +24,7 @@ const AddExpense = () => {
   const sendRequest = async () => {
     const res = await axios
       .post(
-        `${process.env.req_url}/expense/add`,
+        `${process.env.REACT_APP_BASE_URL}/expense/add`,
         {
           amount: amount,
           category: category,

@@ -25,7 +25,7 @@ const EditExpense = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .put(`${process.env.req_url}/expense/${id}`, {
+      .put(`${process.env.REACT_APP_BASE_URL}/expense/${id}`, {
         amount: amount,
         category: category,
         description: description,
@@ -42,7 +42,7 @@ const EditExpense = () => {
 
   const getData = async () => {
     const res = await axios
-      .get(`${process.env.req_url}/expense/${id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/expense/${id}`)
       .catch((err) => console.log(err));
 
     const data = res.data;

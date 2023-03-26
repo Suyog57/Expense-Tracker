@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Authcontext from "../context/Authcontext";
 import jwt from "jwt-decode";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const authContext = useContext(Authcontext);
@@ -18,7 +19,7 @@ const Dashboard = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .get(`${process.env.req_url}/expense`, {
+      .get(`${process.env.REACT_APP_BASE_URL}/expense`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,

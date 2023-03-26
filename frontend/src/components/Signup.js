@@ -21,7 +21,7 @@ const Signup = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post(`${process.env.req_url}/user/signup`, {
+      .post(`${process.env.REACT_APP_BASE_URL}/user/signup`, {
         name: name,
         email: email,
         password: password,

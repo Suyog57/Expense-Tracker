@@ -18,7 +18,7 @@ const Login = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post(`${process.env.req_url}/user/login`, {
+      .post(`${process.env.REACT_APP_BASE_URL}/user/login`, {
         email: email,
         password: password,
       })
