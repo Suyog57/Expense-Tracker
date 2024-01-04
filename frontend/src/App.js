@@ -9,6 +9,7 @@ import Authcontext from "./context/Authcontext";
 import Home from "./components/Home";
 import { useContext } from "react";
 import EditExpense from "./components/EditExpense";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const authContext = useContext(Authcontext);

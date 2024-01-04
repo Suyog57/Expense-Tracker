@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Authcontext from "../context/Authcontext";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,10 +31,19 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    sendRequest()
-      .then((data) => authContext.handleLogin(data.token))
-      .then(() => navigate("/dashboard"))
-      .then((data) => console.log(data));
+    if (email === "") {
+      toast.error("Enter Your Email !");
+    } else if (!email.includes("@")) {
+      toast.error("Enter Valid Email !");
+    } else {
+      toast.success("Login successful!");
+      setTimeout(() => {
+        sendRequest()
+          .then((data) => authContext.handleLogin(data.token))
+          .then(() => navigate("/dashboard"))
+          .then((data) => console.log(data));
+      }, 3000);
+    }
   };
 
   return (
@@ -102,6 +112,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </section>
     </>
   );

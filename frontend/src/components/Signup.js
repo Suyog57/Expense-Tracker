@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Authcontext from "../context/Authcontext";
+import { ToastContainer, toast } from "react-toastify";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -33,11 +34,20 @@ const Signup = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest()
-      // .then((data) => {
-      //   authContext.handleLogin(data.token);
-      // })
-      .then(() => navigate("/login"));
+
+    if (email === "") {
+      toast.error("Enter Your Email !");
+    } else if (!email.includes("@")) {
+      toast.error("Enter Valid Email !");
+    } else if (name === "") {
+      toast.error("Enter Your Name !");
+    } else {
+      sendRequest()
+        // .then((data) => {
+        //   authContext.handleLogin(data.token);
+        // })
+        .then(() => navigate("/login"));
+    }
   };
   return (
     <>
@@ -123,6 +133,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </section>
     </>
   );

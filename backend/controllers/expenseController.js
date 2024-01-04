@@ -4,15 +4,20 @@ const jwtSecret = process.env.JWT_SECRET;
 
 const getall = async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
+  const query = req.query;
+  const search = new RegExp(query, "i");
+  console.log(search + "wtf");
 
   if (!token) {
     return res.status(401).json({ error: "Authentication required" });
   }
-  //console.log(token)
+  
   const decoded = jwt.verify(token, jwtSecret);
   try {
-    // console.log("decoded",decoded);
-    const expenses = await Expense.find({ user: decoded.user });
+    const expenses = await Expense.find(
+      { user: decoded.user },
+      $or[({ category: search }, { amount: search }, { description: search })]
+    );
     return res.json(expenses);
   } catch (err) {
     return res.status(401).json({ error: "Authentication required" });
